@@ -3,14 +3,26 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import BannerHome from "../components/BannerHome";
 import productDetail from '../userData.json'
-import ProductHover from "../components/productHover";
+// import ProductHover from "../components/productHover";
 
+import { connect } from 'react-redux'
+import { addToCart, removeFromCart } from '../redux/actions/action'
 
+const mapStateToProps = state => ({
+  // data: state.cardItems
+})
+const mapDispatchToProps = dispatch => ({
+  addToCartHandler: data => dispatch(addToCart(data)),
+  removeFromCartHandler: data => dispatch(removeFromCart(data))
+
+})
+
+// export default Home;
 const productData = productDetail.productData;
 function Home() {
-  
 
-  
+
+
   return (
     <>
       <Header />
@@ -40,8 +52,13 @@ function Home() {
                           <div className="product__discount__item__pic ">
                             <a href="  "><img src={exp.image} alt="productnotfound" /></a>
                             <div className="product__discount__percent">-20%</div>
-                            <ProductHover/>
-                            
+                            {/* <ProductHover /> */}
+                            <ul className="product__item__pic__hover">
+                              <li><a href=" "><i className="fa fa-heart"></i></a></li>
+                              <li><a href=" "><i className="fa fa-retweet"></i></a></li>
+                              <li><a href="/cart"><i className="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+
                           </div>
                           <div className="product__discount__item__text">
                             <span>Dried Fruit</span>
@@ -59,7 +76,7 @@ function Home() {
                     <div className="row">
                       <div className="col-lg-4 col-md-5">
                         <div className="filter__sort">
-                          <span>Sort By </span> 
+                          <span>Sort By </span>
                           <select>
                             <option value="0"> Default</option>
                             <option value="0"> Default</option>
@@ -100,4 +117,4 @@ function Home() {
   )
 
 }
-export default Home;
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
