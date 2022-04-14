@@ -1,8 +1,9 @@
 
-import Header from "../components/Header";
+// import Header from "../components/Header";
 import Footer from "../components/Footer";
 import BannerHome from "../components/BannerHome";
 import productDetail from '../userData.json'
+import HeaderContainer from "../containers/HeaderContainer";
 // import ProductHover from "../components/productHover";
 
 
@@ -15,7 +16,7 @@ function Home(props) {
 
   return (
     <>
-      <Header />
+      <HeaderContainer />
       <BannerHome />
 
       <div className="latest-products">
@@ -46,7 +47,10 @@ function Home(props) {
                             <ul className="product__item__pic__hover">
                               <li><button type="button"><i className="fa fa-heart"></i></button></li>
                               <li><button type="button"><i className="fa fa-retweet"></i></button></li>
-                              {/* <li><button type="button" onClick={()=>{props.addToCart({id:exp.id,pName:exp.title})}}><i className="fa fa-shopping-cart"></i></button></li> */}
+                              <li><button type="button"
+                                onClick={
+                                  ()=>{props.addToCartHandler({exp})} 
+                                  }><i className="fa fa-shopping-cart"></i></button></li>
                             </ul>
 
                           </div>

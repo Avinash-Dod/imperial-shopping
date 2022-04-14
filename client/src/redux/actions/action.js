@@ -1,14 +1,14 @@
 import { ADD_TO_CART,REMOVE_FROM_CART ,SUB_QUANTITY,ADD_QUANTITY,EMPTY_CART} from "../constants";
-export const addToCart = id => {
+export const addToCart = data => {
     return {
       type: ADD_TO_CART,
-      id:12
+      data:[],
     };
   };
   export const removeFromCart = id => {
     return {
       type: REMOVE_FROM_CART,
-      id,
+      
     };
   };
   export const subtractQuantity = id => {

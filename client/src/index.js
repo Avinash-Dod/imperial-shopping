@@ -12,10 +12,7 @@ const store = createStore(rootReducer)
 store.subscribe(() => {
   console.log('current state', store.getState())
 })
-store.dispatch({
-  type: 'ADD_TO_CART',
-  data: { id: 1, pName: 'DSLR' }
-})
+
 
 ReactDOM.render(
   <React.StrictMode>

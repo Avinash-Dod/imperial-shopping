@@ -10,13 +10,9 @@ const ShoppinReducer = (state = initialState, action) => {
         products: action.data
       };
     case REMOVE_FROM_CART:
+      state.pop()
       return {
-        ...state,
-        products: state.products(product =>
-          product.id === action.id
-            ? { ...product, selected: false, quantity: 1 }
-            : product,
-        ),
+        ...state
       };
     case ADD_QUANTITY:
       return {
