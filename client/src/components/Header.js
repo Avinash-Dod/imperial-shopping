@@ -1,5 +1,6 @@
 
 import { NavLink } from "react-router-dom";
+
 function tabBar() {
   var x = document.getElementById("navbarResponsive");
   if (x.style.display === "block") {
@@ -10,8 +11,10 @@ function tabBar() {
 }
 
 
+// export default Home;
 
-function Header() {
+
+function Header(props) {
   return (
     <>
       <header className="">
@@ -37,7 +40,7 @@ function Header() {
                   <NavLink className="nav-link" activeClassName="active" to="/login"><i className="fa fa-user" aria-hidden="true"></i> Login</NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" activeClassName="active" to="/cart"><i className="fa fa-shopping-cart" aria-hidden="true"></i> Cart</NavLink>
+                  <NavLink className="nav-link" activeClassName="active" to="/cart"><i className="fa fa-shopping-cart" aria-hidden="true"></i> {props.data}</NavLink>
                 </li>
                 <li className="nav-item">
                   <NavLink className="nav-link" activeClassName="active"  to="/favourite"><i className="fa fa-heart" aria-hidden="true"></i> Favourite</NavLink>
@@ -51,7 +54,7 @@ function Header() {
     </>
   )
 }
-export default Header;
+export default Header
 
 
 

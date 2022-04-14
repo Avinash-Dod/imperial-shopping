@@ -2,7 +2,7 @@ import { ADD_TO_CART,REMOVE_FROM_CART ,SUB_QUANTITY,ADD_QUANTITY,EMPTY_CART} fro
 export const addToCart = id => {
     return {
       type: ADD_TO_CART,
-      id
+      id:12
     };
   };
   export const removeFromCart = id => {

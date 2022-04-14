@@ -5,21 +5,11 @@ import BannerHome from "../components/BannerHome";
 import productDetail from '../userData.json'
 // import ProductHover from "../components/productHover";
 
-import { connect } from 'react-redux'
-import { addToCart, removeFromCart } from '../redux/actions/action'
 
-const mapStateToProps = state => ({
-  // data: state.cardItems
-})
-const mapDispatchToProps = dispatch => ({
-  addToCartHandler: data => dispatch(addToCart(data)),
-  removeFromCartHandler: data => dispatch(removeFromCart(data))
-
-})
 
 // export default Home;
 const productData = productDetail.productData;
-function Home() {
+function Home(props) {
 
 
 
@@ -54,9 +44,9 @@ function Home() {
                             <div className="product__discount__percent">-20%</div>
                             {/* <ProductHover /> */}
                             <ul className="product__item__pic__hover">
-                              <li><a href=" "><i className="fa fa-heart"></i></a></li>
-                              <li><a href=" "><i className="fa fa-retweet"></i></a></li>
-                              <li><a href="/cart"><i className="fa fa-shopping-cart"></i></a></li>
+                              <li><button type="button"><i className="fa fa-heart"></i></button></li>
+                              <li><button type="button"><i className="fa fa-retweet"></i></button></li>
+                              {/* <li><button type="button" onClick={()=>{props.addToCart({id:exp.id,pName:exp.title})}}><i className="fa fa-shopping-cart"></i></button></li> */}
                             </ul>
 
                           </div>
@@ -117,4 +107,4 @@ function Home() {
   )
 
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default Home
