@@ -1,18 +1,15 @@
 
-// import Header from "../components/Header";
+import { connect } from 'react-redux'
+import { addToCart } from '../redux/actions/action';
 import Footer from "../components/Footer";
 import BannerHome from "../components/BannerHome";
-import productDetail from '../userData.json'
+// import productDetail from '../userData.json'
 import HeaderContainer from "../containers/HeaderContainer";
-// import ProductHover from "../components/productHover";
-
-
-
-// export default Home;
-const productData = productDetail.productData;
+// const productData = productDetail.productData;
 function Home(props) {
-
-
+  const handleClick = (id) => {
+    props.addToCart(id)
+  }
 
   return (
     <>
@@ -35,37 +32,37 @@ function Home(props) {
               <div className="col-lg-12">
                 <div className="product__discount">
 
-                  <div className="row">
+                  {/* <div className="row">
 
-                    {productData.map((exp) => (
-                      <div className="col-lg-3 " key={Math.random()}>
+                    {props.items.map((item) => (
+                      <div className="col-lg-3 " key={item.id}>
                         <div className="product__discount__item">
                           <div className="product__discount__item__pic ">
-                            <a href="  "><img src={exp.image} alt="productnotfound" /></a>
+                            <a href="  "><img src={item.img} alt={item.title} /></a>
                             <div className="product__discount__percent">-20%</div>
-                            {/* <ProductHover /> */}
+
                             <ul className="product__item__pic__hover">
                               <li><button type="button"><i className="fa fa-heart"></i></button></li>
                               <li><button type="button"><i className="fa fa-retweet"></i></button></li>
                               <li><button type="button"
-                                onClick={
-                                  ()=>{props.addToCartHandler({exp})} 
-                                  }><i className="fa fa-shopping-cart"></i></button></li>
+                                onClick={() => { handleClick(item.id) }}
+                              ><i className="fa fa-shopping-cart"></i></button></li>
                             </ul>
 
                           </div>
                           <div className="product__discount__item__text">
-                            <span>Dried Fruit</span>
-                            <h5><a href=" ">Raisin’n’nuts</a></h5>
-                            <div className="product__item__price">$30.00 <span>$36.00</span></div>
+                            <span>{item.title}</span>
+                            <h5><a href=" ">{item.desc}</a></h5>
+                            <div className="product__item__price">{item.price}<span>{item.price}</span></div>
                           </div>
                         </div>
                       </div>
                     ))}
+                  </div> */}
 
 
 
-                  </div>
+
                   <div className="filter__item">
                     <div className="row">
                       <div className="col-lg-4 col-md-5">
@@ -111,4 +108,16 @@ function Home(props) {
   )
 
 }
-export default Home
+const mapStateToProps = (state) => {
+  return {
+    items: state.items
+  }
+}
+const mapDispatchToProps = (dispatch) => {
+
+  return {
+    addToCart: (id) => { dispatch(addToCart(id)) }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

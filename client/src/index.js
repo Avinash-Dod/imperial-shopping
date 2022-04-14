@@ -9,9 +9,14 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom'
 
 const store = createStore(rootReducer)
-store.subscribe(() => {
-  console.log('current state', store.getState())
+store.subscribe(()=>{
+  console.log('current state',store.getState())
 })
+
+
+store.dispatch({
+  type: 'INCREMENT'
+});
 
 
 ReactDOM.render(

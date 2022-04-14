@@ -2,28 +2,15 @@ const Products = require("../model/productSchema");
 const multer = require("multer");
 
 const mongoose = require("mongoose");
-
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "./upload/product");
-  },
-  filename: function (_req, file, cb) {
-    cb(null, Date.now() + file.originalname);
-  },
-});
-
-const uploadImg = multer({ storage: storage }).single("image");
-
 const addproducts = (req, res) => {
   const products = new Products({
     _id: new mongoose.Types.ObjectId(),
-    name: req.body.name,
-    // id: req.body.id,
-    description:req.body.description,
-    price: req.body.price
-   
-  });
+    id: Math.floor(Math.random() * 100),
+    productName: req.body.productName,
+    price: req.body.price,
+    description:req.body.description
 
+  });
   products
     .save()
     .then((result) => {
@@ -46,6 +33,5 @@ const getproducts = (_req, res) => {
 };
 module.exports = {
   addproducts,
-  getproducts,
-  uploadImg,
+  getproducts
 };

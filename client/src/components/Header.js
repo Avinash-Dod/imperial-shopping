@@ -15,6 +15,7 @@ function tabBar() {
 
 
 function Header(props) {
+  // console.log(props.data)
   return (
     <>
       <header className="">
@@ -40,7 +41,7 @@ function Header(props) {
                   <NavLink className="nav-link" activeClassName="active" to="/login"><i className="fa fa-user" aria-hidden="true"></i> Login</NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" activeClassName="active" to="/cart"><i className="fa fa-shopping-cart" aria-hidden="true"></i> {props.data}</NavLink>
+                  <NavLink className="nav-link" activeClassName="active" to="/cart"><i className="fa fa-shopping-cart" aria-hidden="true"></i> Cart <sup>{props.items.length}</sup> </NavLink>
                 </li>
                 <li className="nav-item">
                   <NavLink className="nav-link" activeClassName="active"  to="/favourite"><i className="fa fa-heart" aria-hidden="true"></i> Favourite</NavLink>

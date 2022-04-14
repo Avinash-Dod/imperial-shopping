@@ -1,51 +1,116 @@
-import { ADD_TO_CART, REMOVE_FROM_CART, SUB_QUANTITY, ADD_QUANTITY, EMPTY_CART } from "../constants";
-const initialState = {
-  products: [],
-};
-const ShoppinReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case ADD_TO_CART:
+import Item1 from '../images/item1.jpg'
+import Item2 from '../images/item2.jpg'
+import Item3 from '../images/item3.jpg'
+import Item4 from '../images/item4.jpg'
+import Item5 from '../images/item5.jpg'
+import Item6 from '../images/item6.jpg'
+import { ADD_TO_CART, REMOVE_FROM_CART, SUB_QUANTITY, ADD_QUANTITY, ADD_SHIPPING } from "../constants";
+
+const initState = {
+  items: [
+
+    { id: 1, title: "DSLR", "price": "2500", desc: "Groceries", img: Item1 },
+    { id: 2, title: 'Adidas', desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.", price: 80, img: Item2 },
+    { id: 3, title: 'Vans', desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.", price: 120, img: Item3 },
+    { id: 4, title: 'White', desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.", price: 260, img: Item4 },
+    { id: 5, title: 'Cropped-sho', desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.", price: 160, img: Item5 },
+    { id: 6, title: 'Blues', desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.", price: 90, img: Item6 }
+  ],
+  addedItems: [],
+  total: 0
+
+}
+const ShoppinReducer = (state = initState, action) => {
+  //add to cart
+  if (action.type === ADD_TO_CART) {
+    let addedItem = state.items.find(item => item.id === action.id)
+    //check if the action id exists in the addedItems
+    let existed_item = state.addedItems.find(item => action.id === item.id)
+    if (existed_item) {
+      addedItem.quantity += 1
       return {
         ...state,
-        products: action.data
-      };
-    case REMOVE_FROM_CART:
-      state.pop()
-      return {
-        ...state
-      };
-    case ADD_QUANTITY:
-      return {
-        ...state,
-        products: state.products.map(product =>
-          product.id === action.id
-            ? { ...product, quantity: product.quantity + 1 }
-            : product,
-        ),
-      };
-    case SUB_QUANTITY:
+        total: state.total + addedItem.price
+      }
+    }
+    else {
+      addedItem.quantity = 1;
+      //calculating the total
+      let newTotal = state.total + addedItem.price
+
       return {
         ...state,
-        products: state.products.map(product =>
-          product.id === action.id
-            ? {
-              ...product,
-              quantity: product.quantity !== 1 ? product.quantity - 1 : 1,
-            }
-            : product,
-        ),
-      };
-    case EMPTY_CART:
-      return {
-        ...state,
-        products: state.products.map(product =>
-          product.selected
-            ? { ...product, selected: false, quantity: 1 }
-            : product,
-        ),
-      };
-    default:
-      return initialState.products;
+        addedItems: [...state.addedItems, addedItem],
+        total: newTotal
+      }
+
+    }
   }
-};
-export { ShoppinReducer };
+  //remove from cart
+  if (action.type === REMOVE_FROM_CART) {
+    let itemToRemove = state.addedItems.find(item => action.id === item.id)
+    let new_items = state.addedItems.filter(item => action.id !== item.id)
+
+    //calculating the total
+    let newTotal = state.total - (itemToRemove.price * itemToRemove.quantity)
+    console.log(itemToRemove)
+    return {
+      ...state,
+      addedItems: new_items,
+      total: newTotal
+    }
+  }
+  if (action.type === ADD_QUANTITY) {
+    let addedItem = state.items.find(item => item.id === action.id)
+    addedItem.quantity += 1
+    let newTotal = state.total + addedItem.price
+    return {
+      ...state,
+      total: newTotal
+    }
+  }
+  if (action.type === SUB_QUANTITY) {
+    let addedItem = state.items.find(item => item.id === action.id)
+    //if the qt == 0 then it should be removed
+    if (addedItem.quantity === 1) {
+      let new_items = state.addedItems.filter(item => item.id !== action.id)
+      let newTotal = state.total - addedItem.price
+      return {
+        ...state,
+        addedItems: new_items,
+        total: newTotal
+      }
+    }
+    else {
+      addedItem.quantity -= 1
+      let newTotal = state.total - addedItem.price
+      return {
+        ...state,
+        total: newTotal
+      }
+    }
+
+  }
+
+  if (action.type === ADD_SHIPPING) {
+    return {
+      ...state,
+      total: state.total + 6
+    }
+  }
+
+  if (action.type === 'SUB_SHIPPING') {
+    return {
+      ...state,
+      total: state.total - 6
+    }
+  }
+
+  else {
+    return initState.items
+  }
+
+}
+
+
+export {ShoppinReducer};
