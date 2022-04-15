@@ -1,11 +1,11 @@
 import { Route, Routes } from "react-router";
-import HomeContainer from "../containers/HomeContainer";
+
 import About from "../Pages/About";
 import Cart from "../Pages/Cart";
 import Contact from "../Pages/Contact";
 import Favourite from "../Pages/Favorite";
 import Home from "../Pages/Home";
-// import Home from "../Pages/Home";
+
 import Login from "../Pages/Login";
 
 

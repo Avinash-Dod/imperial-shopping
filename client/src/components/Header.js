@@ -16,7 +16,7 @@ function tabBar() {
 
 
 function Header(props) {
-  console.log(props.items)
+  
   
   return (
     <>

@@ -1,11 +1,24 @@
+import { connect } from 'react-redux'
 
 import Header from "../components/Header"
 import Footer from "../components/Footer";
+import { removeItem, addQuantity, subtractQuantity } from '../redux/actions/action';
+import { Link } from 'react-router-dom';
 
-const Cart = () => {
-  
-
-
+const Cart = (props) => {
+  // console.log(props.addedItems[1])
+  //to remove the item completely
+  const handleRemove = (id) => {
+    props.removeItem(id);
+  }
+  //to add the quantity
+  const handleAddQuantity = (id) => {
+    props.addQuantity(id);
+  }
+  //to substruct from the quantity
+  const handleSubtractQuantity = (id) => {
+    props.subtractQuantity(id);
+  }
   return (
     <>
       <Header />
@@ -25,74 +38,49 @@ const Cart = () => {
                       <th></th>
                     </tr>
                   </thead>
+
                   <tbody>
-                    <tr>
-                      <td className="shoping__cart__item">
-                        <img src="img/cart/cart-1.jpg" alt="" />
-                        <h5>Vegetable’s Package</h5>
-                      </td>
-                      <td className="shoping__cart__price">
-                        $55.00
-                      </td>
-                      <td className="shoping__cart__quantity">
-                        <div className="quantity">
-                          <div className="pro-qty">
-                            <input type="text" value="1" />
-                          </div>
-                        </div>
-                      </td>
-                      <td className="shoping__cart__total">
-                        $110.00
-                      </td>
-                      <td className="shoping__cart__item__close">
-                        <span className="fa fa-close"></span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="shoping__cart__item">
-                        <img src="img/cart/cart-2.jpg" alt="" />
-                        <h5>Fresh Garden Vegetable</h5>
-                      </td>
-                      <td className="shoping__cart__price">
-                        $39.00
-                      </td>
-                      <td className="shoping__cart__quantity">
-                        <div className="quantity">
-                          <div className="pro-qty">
-                            <input type="text" value="1" />
-                          </div>
-                        </div>
-                      </td>
-                      <td className="shoping__cart__total">
-                        $39.99
-                      </td>
-                      <td className="shoping__cart__item__close">
-                        <span className="fa fa-close"></span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="shoping__cart__item">
-                        <img src="img/cart/cart-3.jpg" alt="" />
-                        <h5>Organic Bananas</h5>
-                      </td>
-                      <td className="shoping__cart__price">
-                        $69.00
-                      </td>
-                      <td className="shoping__cart__quantity">
-                        <div className="quantity">
-                          <div className="pro-qty">
-                            <input type="text" value="1" />
-                          </div>
-                        </div>
-                      </td>
-                      <td className="shoping__cart__total">
-                        $69.99
-                      </td>
-                      <td className="shoping__cart__item__close">
-                        <span className="fa fa-close"></span>
-                      </td>
-                    </tr>
+
+                    {props.addedItems[1].length ?
+                      (
+                        props.addedItems[1].map(item => {
+                          return (
+
+                            <tr>
+                              <td className="shoping__cart__item">
+                                <img src={item.img} alt={item.img} />
+                                <h5>{item.title}</h5>
+                              </td>
+                              <td className="shoping__cart__price">
+                                {item.price}
+                              </td>
+                              <td class="shoping__cart__quantity">
+                                <div class="quantity">
+                                  <div class="pro-qty">
+                                    <span class="dec qtybtn" onClick={() => { handleSubtractQuantity(item.id) }}>-</span>
+                                    <input type="text" value={item.quantity} />
+                                    <span class="inc qtybtn" onClick={() => { handleAddQuantity(item.id) }}>+</span>
+                                  </div>
+                                </div>
+                              </td>
+                              <td class="shoping__cart__total">
+                                        {item.sum}
+                                    </td>
+
+                              <td className="shoping__cart__item__close">
+                                <span class="fa fa-close" onClick={() => { handleRemove(item.id) }} ></span>
+                              </td>
+                            </tr>
+
+                          )
+                        })
+                      ) :
+                      <p>Nothing in cart</p>
+                    }
+
+
                   </tbody>
+
                 </table>
               </div>
             </div>
@@ -100,9 +88,8 @@ const Cart = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="shoping__cart__btns" >
-                <a href=" "  className="primary-btn cart-btn">CONTINUE SHOPPING</a>
-                <a href=" " className="primary-btn cart-btn cart-btn-right"><span className="fa fa-gears"></span> 
-                  Upadate Cart</a>
+              <Link to='/' className="primary-btn cart-btn">CONTINUE SHOPPING</Link> 
+               
               </div>
             </div>
             <div className="col-lg-6">
@@ -134,5 +121,19 @@ const Cart = () => {
     </>
   )
 }
-export default Cart
+const mapStateToProps = (state) => {
+
+  return {
+    addedItems: Object.values(state.ShoppinReducer)
+  }
+
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    removeItem: (id) => { dispatch(removeItem(id)) },
+    addQuantity: (id) => { dispatch(addQuantity(id)) },
+    subtractQuantity: (id) => { dispatch(subtractQuantity(id)) }
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Cart)
 
