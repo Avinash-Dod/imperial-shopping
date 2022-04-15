@@ -17,26 +17,33 @@ const initState = {
     { id: 6, title: 'Blues', desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.", price: 90, img: Item6 }
   ],
   addedItems: [],
-  total: 0
+  total: 0,
+  counter:0
 
 }
 const ShoppinReducer = (state = initState, action) => {
   //add to cart
   if (action.type === ADD_TO_CART) {
+    
     let addedItem = state.items.find(item => item.id === action.id)
     //check if the action id exists in the addedItems
     let existed_item = state.addedItems.find(item => action.id === item.id)
+   
+      state.counter=state.counter +1
+   
     if (existed_item) {
       addedItem.quantity += 1
       return {
+        
         ...state,
-        total: state.total + addedItem.price
+        total: state.total + parseInt(addedItem.price)
       }
+      
     }
     else {
       addedItem.quantity = 1;
       //calculating the total
-      let newTotal = state.total + addedItem.price
+      let newTotal = state.total + parseInt(addedItem.price)
 
       return {
         ...state,
@@ -50,8 +57,8 @@ const ShoppinReducer = (state = initState, action) => {
   if (action.type === REMOVE_FROM_CART) {
     let itemToRemove = state.addedItems.find(item => action.id === item.id)
     let new_items = state.addedItems.filter(item => action.id !== item.id)
-
-    //calculating the total
+    state.counter=state.counter -1
+    //calculating the total    
     let newTotal = state.total - (itemToRemove.price * itemToRemove.quantity)
     console.log(itemToRemove)
     return {
@@ -107,7 +114,7 @@ const ShoppinReducer = (state = initState, action) => {
   }
 
   else {
-    return initState.items
+    return state
   }
 
 }

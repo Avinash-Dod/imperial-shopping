@@ -1,5 +1,6 @@
 
 import { NavLink } from "react-router-dom";
+import { connect } from 'react-redux'
 
 function tabBar() {
   var x = document.getElementById("navbarResponsive");
@@ -15,7 +16,8 @@ function tabBar() {
 
 
 function Header(props) {
-  // console.log(props.data)
+  console.log(props.items)
+  
   return (
     <>
       <header className="">
@@ -32,7 +34,7 @@ function Header(props) {
                 </li>
 
                 <li className="nav-item">
-                  <NavLink className="nav-link"  activeClassName="active" to="/contact"><i className="fa fa-envelope" aria-hidden="true"></i> Contact</NavLink>
+                  <NavLink className="nav-link" activeClassName="active" to="/contact"><i className="fa fa-envelope" aria-hidden="true"></i> Contact</NavLink>
                 </li>
                 <li className="nav-item">
                   <NavLink className="nav-link" activeClassName="active" to="/about"><i className="fa fa-info-circle" aria-hidden="true"></i> About</NavLink>
@@ -41,10 +43,10 @@ function Header(props) {
                   <NavLink className="nav-link" activeClassName="active" to="/login"><i className="fa fa-user" aria-hidden="true"></i> Login</NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" activeClassName="active" to="/cart"><i className="fa fa-shopping-cart" aria-hidden="true"></i> Cart <sup>{props.items.length}</sup> </NavLink>
+                  <NavLink className="nav-link" activeClassName="active" to="/cart"><i className="fa fa-shopping-cart" aria-hidden="true"></i> {props.items[3]} </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" activeClassName="active"  to="/favourite"><i className="fa fa-heart" aria-hidden="true"></i> Favourite</NavLink>
+                  <NavLink className="nav-link" activeClassName="active" to="/favourite"><i className="fa fa-heart" aria-hidden="true"></i> Favourite</NavLink>
                 </li>
               </ul>
             </div>
@@ -55,7 +57,14 @@ function Header(props) {
     </>
   )
 }
-export default Header
+const mapStateToProps = (state) => {
+  return {
+    items:Object.values(state.ShoppinReducer)
+  }
+}
+const mapDispatchToProps = dispatch => ({
+})
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
 
 
 
