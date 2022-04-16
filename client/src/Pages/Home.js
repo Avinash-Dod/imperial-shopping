@@ -41,19 +41,32 @@ function Home(props) {
                             <a href="  "><img src={product.img} alt={product.title} /></a>
                             <div className="product__discount__percent">-20%</div>
 
-                            <ul className="product__item__pic__hover">
+                            {/* <ul className="product__item__pic__hover">
                               <li><button type="button"><i className="fa fa-heart"></i></button></li>
                               <li><button type="button" 
                                 onClick={() => { handleClick(product.id) }}
                               ><i className="fa fa-shopping-cart"></i></button></li>
-                            </ul>
+                            </ul> */}
 
                           </div>
+                          <div class="product__details__rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half-o"></i>
+                            <span>(18 reviews)</span>
+                        </div>
                           <div className="product__discount__item__text">
                             <span>{product.title}</span>
-                            <h5><a href=" ">{product.desc}</a></h5>
-                            <div className="product__item__price">{product.price}<span>{product.price}</span></div>
+                            <h5><a href=" " data-content={product.desc} data-placement="bottom">Read More...</a></h5>
+                            <div className="product__item__price"><i class='fa fa-rupee'></i> {product.price}<span><i class='fa fa-rupee'></i> {product.price}</span></div>
+                            <button type="button" className='site-btnn '><i className="fa fa-heart"></i></button>
+                            <button type="button" className='site-btnn '
+                                onClick={() => { handleClick(product.id) }}
+                              ><i className="fa fa-shopping-cart"></i></button>
                           </div>
+                          
                         </div>
                       </div>
                     ))}

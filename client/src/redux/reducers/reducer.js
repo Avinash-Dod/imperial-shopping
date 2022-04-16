@@ -65,7 +65,7 @@ const ShoppinReducer = (state = initState, action) => {
     let itemToRemove = state.addedItems.find(item => action.id === item.id)
     let new_items = state.addedItems.filter(item => action.id !== item.id)
 
-    let countTotal = state.counter - 1
+    let countTotal = state.counter - itemToRemove.quantity
     itemToRemove.sum -= itemToRemove.price
     console.log(itemToRemove.sum);
     //calculating the total    

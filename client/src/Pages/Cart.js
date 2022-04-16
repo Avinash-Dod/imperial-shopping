@@ -52,7 +52,7 @@ const Cart = (props) => {
                                 <h5>{item.title}</h5>
                               </td>
                               <td className="shoping__cart__price">
-                                {item.price}
+                              <i class='fa fa-rupee'></i> {item.price}
                               </td>
                               <td class="shoping__cart__quantity">
                                 <div class="quantity">
@@ -64,7 +64,7 @@ const Cart = (props) => {
                                 </div>
                               </td>
                               <td class="shoping__cart__total">
-                                        {item.sum}
+                              <i class='fa fa-rupee'></i>{item.sum}
                                     </td>
 
                               <td className="shoping__cart__item__close">
@@ -75,7 +75,7 @@ const Cart = (props) => {
                           )
                         })
                       ) :
-                      <p>Nothing in cart</p>
+                      <tr><td colSpan={4}><h3> <i class="fa fa-times-circle"></i>Nothing in Cart</h3></td></tr>
                     }
 
 
