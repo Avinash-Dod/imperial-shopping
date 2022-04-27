@@ -75,10 +75,39 @@ const getUserList = async (_req, res) => {
       res.send(users);
     });
 };
+const Delete = (req, res) => {
+  const id  = req.params.body
+
+  User.deleteOne({
+    id:id
+  })
+    .then((num) => {
+      if (num === 1) {
+        return res.send({
+          message: "User was deleted successfully!",
+          success: true,
+          data: {},
+        });
+      } else {
+        return res.send({
+          message: `Cannot delete User `,
+          success: false,
+          data: {},
+        });
+      }
+    })
+    .catch((err) => {
+      return res.status(500).send({
+        message: "Could not delete User with id=" + id,
+        success: false,
+        data: {},
+      });
+    });
+};
 
 // login user  functionality
 const loginUser = (req, res) => {
-  User.find({ username: req.body.username })
+  User.find({email: req.body.email})
     .exec()
     .then((user) => {
       if (user.length < 1) {
@@ -132,4 +161,5 @@ module.exports = {
   loginUser,
   getUserList,
   uploadImg,
+  Delete
 };

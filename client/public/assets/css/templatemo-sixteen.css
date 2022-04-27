@@ -854,9 +854,7 @@ footer .inner-content p a {
 }
 
 .find-us p {
-  border-bottom: 1px solid #eee;
-  padding-bottom: 30px;
-  margin-bottom: 30px;
+  color: #dd2222; 
 }
 
 .find-us h4 {

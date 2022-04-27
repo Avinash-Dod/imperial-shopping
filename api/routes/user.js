@@ -4,6 +4,7 @@ const router = express.Router();
 const userController = require("../controller/usercontroller");
 
 router.post("/signup", userController.uploadImg, userController.registerUser);
+router.delete("/delete/:id", userController.Delete);
 
 // getting all the users from tha database
  router.get("/signup", userController.getUserList);

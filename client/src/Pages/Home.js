@@ -4,10 +4,19 @@ import { addToCart } from '../redux/actions/action';
 import Footer from "../components/Footer";
 import BannerHome from "../components/BannerHome";
 import Header from '../components/Header';
+import { useNavigate } from 'react-router-dom';
 
 function Home(props) {
-    const handleClick = (id) => {
-    props.addToCart(id)
+  const navigate=useNavigate()
+  const handleClick = (id) => {
+    if(localStorage.getItem('user'))
+    {
+      props.addToCart(id)
+    }
+    else{
+      alert("Please Login First.")
+     navigate("/login")
+    }
   }
 
 
@@ -38,15 +47,8 @@ function Home(props) {
                       <div className="col-lg-3 " key={product.id}>
                         <div className="product__discount__item">
                           <div className="product__discount__item__pic ">
-                            <a href="  "><img src={product.img} alt={product.title} /></a>
+                            <a href="/productDetail "><img src={product.img} alt={product.title} /></a>
                             <div className="product__discount__percent">-20%</div>
-
-                            {/* <ul className="product__item__pic__hover">
-                              <li><button type="button"><i className="fa fa-heart"></i></button></li>
-                              <li><button type="button" 
-                                onClick={() => { handleClick(product.id) }}
-                              ><i className="fa fa-shopping-cart"></i></button></li>
-                            </ul> */}
 
                           </div>
                           <div class="product__details__rating">
@@ -56,17 +58,17 @@ function Home(props) {
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star-half-o"></i>
                             <span>(18 reviews)</span>
-                        </div>
+                          </div>
                           <div className="product__discount__item__text">
-                            <span>{product.title}</span>
-                            <h5><a href=" " data-content={product.desc} data-placement="bottom">Read More...</a></h5>
-                            <div className="product__item__price"><i class='fa fa-rupee'></i> {product.price}<span><i class='fa fa-rupee'></i> {product.price}</span></div>
+                            <span><></>{product.title}</span>
+                            {/* <h5><a href="/productDetail " data-content={product.desc} data-placement="bottom">{product.desc}</a></h5> */}
+                            <div className="product__item__price"><a href='/productDetail' ><i class='fa fa-rupee'></i> {product.price}<span><i class='fa fa-rupee'></i> {product.price}</span></a></div>
                             <button type="button" className='site-btnn '><i className="fa fa-heart"></i></button>
                             <button type="button" className='site-btnn '
-                                onClick={() => { handleClick(product.id) }}
-                              ><i className="fa fa-shopping-cart"></i></button>
+                              onClick={() => { handleClick(product.id) }}
+                            ><i className="fa fa-shopping-cart"></i></button>
                           </div>
-                          
+
                         </div>
                       </div>
                     ))}
@@ -122,7 +124,7 @@ function Home(props) {
 }
 const mapStateToProps = (state) => {
   return {
-    items:Object.values(state.ShoppinReducer)
+    items: Object.values(state.ShoppinReducer)
   }
 
 }

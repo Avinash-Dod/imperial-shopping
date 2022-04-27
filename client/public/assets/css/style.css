@@ -182,10 +182,9 @@ ol {
   border: none;
 }
 
-
 .site-btnn {
-  font-size: 18px;
-  color: #f33f3f;
+  font-size: 25px;
+  color: #1c1c1c;
   font-weight: 800;
   height: 40px;
   width: 30px;
@@ -198,11 +197,7 @@ ol {
   background: #ffffff;
   display: inline-block;
   border-radius: 50%;
-  -webkit-transition: all, 0.5s;
-  -moz-transition: all, 0.5s;
-  -ms-transition: all, 0.5s;
-  -o-transition: all, 0.5s;
-  transition: all, 0.5s;
+  
 }
 
 
@@ -1307,7 +1302,10 @@ ol {
 }
 
 .product__discount__item__pic {
-  height: 270px;
+  height: 200px;
+  width: 200px;
+  margin: auto;
+  text-align: center;
   position: relative;
   overflow: hidden;
 }
@@ -1422,8 +1420,22 @@ ol {
   font-weight: 400;
   text-decoration: line-through;
   margin-left: 10px;
-}
 
+}
+.product__item__price a:hover{
+  color: #dd2222;
+
+}
+.product__discount__item__text button:hover{
+  color: #dd2222;
+  
+
+}
+.product__item__price a{
+  color: #1c1c1c;
+  
+
+}
 .product__discount__slider .col-lg-4 {
   max-width: 100%;
 }
@@ -1804,7 +1816,7 @@ ol {
 
 
 
-}
+
 .pro-qty {
   width: 140px;
   height: 50px;
@@ -2068,9 +2080,14 @@ ol {
   letter-spacing: 4px;
   background: #6f6f6f;
 }
-
+.shoping__checkout button {
+  text-align: center;
+  display: block;
+  
+  letter-spacing: 2px;
+}
 .shoping__checkout {
-  text-align: left;
+  
   background: #f5f5f5;
   padding: 30px;
   padding-top: 20px;
@@ -2111,9 +2128,8 @@ ol {
   float: right;
 }
 
-.shoping__checkout .primary-btn {
-  display: block;
-  text-align: center;
+.shoping__checkout  {  
+  text-align: left;
 }
 
 /*---------------------
@@ -2151,6 +2167,8 @@ ol {
   border-bottom: 1px solid #e1e1e1;
   padding-bottom: 20px;
   margin-bottom: 25px;
+  
+  
 }
 
 .checkout__form p {
@@ -2159,6 +2177,7 @@ ol {
 
 .checkout__input {
   margin-bottom: 24px;
+  text-align: left;
 }
 
 .checkout__input p {
@@ -2242,8 +2261,10 @@ ol {
 
 .checkout__order {
   background: #f5f5f5;
-  padding: 40px;
-  padding-top: 30px;
+  padding: 25px;
+  padding-top: 25px;
+  text-align: justify;
+  
 }
 
 .checkout__order h4 {

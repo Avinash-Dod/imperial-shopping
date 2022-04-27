@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART, SUB_QUANTITY, ADD_QUANTITY, EMPTY_CART } from "../constants";
+import { ADD_TO_CART, REMOVE_FROM_CART, SUB_QUANTITY, ADD_QUANTITY, EMPTY_CART, APPLY_COUPON, LOGIN, LOGOUT } from "../constants";
 
 //add cart action
 export const addToCart = (id) => {
@@ -28,9 +28,27 @@ export const addQuantity = (id) => {
     id
   }
 }
-
+export const applyCoupon = (code) => {
+  return {
+    type: APPLY_COUPON,
+    code
+  }
+}
 export const emptyCart = () => {
   return {
     type: EMPTY_CART,
   };
 };
+
+//User aations
+export const login = () => {
+  return {
+    type: LOGIN
+  }
+}
+export const logout = () => {
+  return {
+    type: LOGOUT
+  }
+
+}

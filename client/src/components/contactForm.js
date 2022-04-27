@@ -1,6 +1,17 @@
 
 const ContactForm=()=>{
-
+    
+    
+    const check = () => {
+        if (!localStorage.getItem('user')) {
+          alert("Please Login first")
+          return
+        }
+        else {
+          alert("Sent Successfully")
+        }
+    
+      }
     return (
         <div className="contact-form container-well ">
         <div className="container">
@@ -21,7 +32,7 @@ const ContactForm=()=>{
                     </div>
                     <div className="col-lg-12 text-center">
                         <textarea placeholder="Your message"></textarea>
-                        <button type="submit" className="site-btn">SEND MESSAGE</button>
+                        <button type="submit" onClick={()=>check()} className="site-btn">SEND MESSAGE</button>
                     </div>
                 </div>
             </form>

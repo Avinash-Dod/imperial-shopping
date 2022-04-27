@@ -4,7 +4,7 @@ import Item3 from '../images/item3.jpg'
 import Item4 from '../images/item4.jpg'
 import Item5 from '../images/item5.jpg'
 import Item6 from '../images/item6.jpg'
-import { ADD_TO_CART, REMOVE_FROM_CART, SUB_QUANTITY, ADD_QUANTITY, ADD_SHIPPING } from "../constants";
+import { ADD_TO_CART, REMOVE_FROM_CART, SUB_QUANTITY, ADD_QUANTITY, ADD_SHIPPING, APPLY_COUPON, LOGIN, EMPTY_CART, LOGOUT } from "../constants";
 
 const initState = {
   items: [
@@ -18,10 +18,18 @@ const initState = {
   ],
   addedItems: [],
   total: 0,
-  counter: 0
+  counter: 0,
+  isAuth: false
 
 }
-const ShoppinReducer = (state = initState, action) => {
+// export const UserReducer=(state=initState.isAuth,action)=>{
+//   if(action.type=== LOGIN)
+//   return {
+//     ...state,
+//     state:true   
+//   }
+// }
+export const ShoppinReducer = (state = initState, action) => {
   //add to cart
   if (action.type === ADD_TO_CART) {
 
@@ -29,35 +37,27 @@ const ShoppinReducer = (state = initState, action) => {
     //check if the action id exists in the addedItems
     let existed_item = state.addedItems.find(item => action.id === item.id)
 
-
-    
     if (existed_item) {
-
+      // alert("You've already added this item in cart, please check cart")
       state.counter = state.counter + 1
       addedItem.quantity = addedItem.quantity + 1
       addedItem.sum += addedItem.price
-      
       return {
-
         ...state,
         total: state.total + parseInt(addedItem.price)
       }
-
     }
     else {
       addedItem.quantity = 1;
       //calculating the total      
       state.counter = state.counter + 1
       addedItem.sum = 0 + addedItem.price
-      
       let newTotal = state.total + parseInt(addedItem.price)
-
       return {
         ...state,
         addedItems: [...state.addedItems, addedItem],
         total: newTotal
       }
-
     }
   }
   //remove from cart
@@ -67,7 +67,6 @@ const ShoppinReducer = (state = initState, action) => {
 
     let countTotal = state.counter - itemToRemove.quantity
     itemToRemove.sum -= itemToRemove.price
-    console.log(itemToRemove.sum);
     //calculating the total    
     let newTotal = state.total - (itemToRemove.price * itemToRemove.quantity)
 
@@ -84,7 +83,7 @@ const ShoppinReducer = (state = initState, action) => {
 
     addedItem.quantity += 1
     addedItem.sum += addedItem.price
-    
+
     let newTotal = state.total + parseInt(addedItem.price)
     let countTotal = state.counter + 1
 
@@ -105,7 +104,7 @@ const ShoppinReducer = (state = initState, action) => {
       let newTotal = state.total - parseInt(addedItem.price)
       addedItem.quantity += 1
       addedItem.sum -= addedItem.price
-      
+
       let countTotal = state.counter - 1
 
       return {
@@ -118,7 +117,7 @@ const ShoppinReducer = (state = initState, action) => {
     else {
       addedItem.quantity -= 1
       addedItem.sum -= addedItem.price
-      
+
       let countTotal = state.counter - 1
 
       let newTotal = state.total - parseInt(addedItem.price)
@@ -130,26 +129,68 @@ const ShoppinReducer = (state = initState, action) => {
     }
 
   }
-
-  if (action.type === ADD_SHIPPING) {
-    return {
-      ...state,
-      total: state.total + 6
+  if (action.type === APPLY_COUPON) {
+    if (action.code === "imperial100") {
+      return {
+        ...state,
+        total: state.total - 100
+      }
     }
+    else if (action.code === "") {
+      return {
+        ...state,
+        total: state.total + 100
+      }
+    }
+
   }
 
+
+  if (action.type === ADD_SHIPPING) {
+    // let addedItem
+    // addedItem.shippingCharge = 49
+    // addedItem.GST = (state.addedItems.price*4/100)
+    return {
+      ...state,
+      total: state.total + 49
+    }
+
+  }
+  console.log(state.addedItems)
   if (action.type === 'SUB_SHIPPING') {
     return {
       ...state,
-      total: state.total - 6
+      total: state.total - 49
     }
   }
 
+  if (action.type === EMPTY_CART) {
+    return {
+      ...state,
+      addedItems: initState.addedItems,
+      total: 0,
+      counter: 0
+    }
+  }
+
+  //user reducer
+  if (action.type === LOGIN) {
+    return {
+      ...state,
+      isAuth: true
+    }
+  }
+  if (action.type === LOGOUT) {
+    localStorage.removeItem('login')
+    localStorage.removeItem('user')
+    return {
+      ...state,
+      isAuth: false
+    }
+  }
   else {
     return state
   }
 
 }
 
-
-export { ShoppinReducer };
