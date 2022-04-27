@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router";
 import AdminLogin from "../Admin/Pages/AdminLogin";
+import Dashboard from "../Admin/Pages/Dashboard";
 import About from "../Pages/About";
 import Cart from "../Pages/Cart";
 import Checkout from "../Pages/Checkout";
@@ -19,13 +20,15 @@ function Nav() {
                 <Route path="contact" element={<Contact />} />
                 <Route path="about" element={<About />} />
                 <Route path="login" element={<Login />} />
-                <Route path="alogin" element={<AdminLogin />} />
                 <Route path="signup" element={<SignUp />} />
                 <Route path="cart" element={<Cart />} />
                 <Route path="ourproducts" element={<OurProducts />} />
                 <Route path="favourite" element={<Favourite />} />
                 <Route path="productDetail" element={<ProductDetail />} />
                 <Route path="checkout" element={<Checkout />} />
+                {/* admin Router */}
+                <Route path="alogin" element={<AdminLogin />} />
+                <Route path="dashboard" element={<Dashboard />} />
             </Routes>
         </div>
     )

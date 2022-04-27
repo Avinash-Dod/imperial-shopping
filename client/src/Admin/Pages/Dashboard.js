@@ -1,9 +1,11 @@
 import AdminHeader from "../Components/AdminHeader"
+import Sidebar from "../Components/Sidebar"
 
 const Dashboard = () => {
     return (
         <>
             <AdminHeader />
+            <Sidebar/>
 
             <div class="main-container">
 

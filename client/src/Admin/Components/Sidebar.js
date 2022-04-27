@@ -1,6 +1,6 @@
 const Sidebar=()=>{
     return(
-        <>
+        
         <div className="wapper">
     
     <div className="side">
@@ -46,8 +46,9 @@ const Sidebar=()=>{
 
       </aside>
     </div>
+    </div>
     
-    </>
+    
     
     )
 }
