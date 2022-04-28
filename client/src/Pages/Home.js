@@ -18,7 +18,7 @@ function Home(props) {
      navigate("/login")
     }
   }
-
+console.log(props.items[4]);
 
   return (
     <>

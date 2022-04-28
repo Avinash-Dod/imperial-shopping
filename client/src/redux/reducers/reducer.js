@@ -4,7 +4,7 @@ import Item3 from '../images/item3.jpg'
 import Item4 from '../images/item4.jpg'
 import Item5 from '../images/item5.jpg'
 import Item6 from '../images/item6.jpg'
-import { ADD_TO_CART, REMOVE_FROM_CART, SUB_QUANTITY, ADD_QUANTITY, ADD_SHIPPING, APPLY_COUPON, LOGIN, EMPTY_CART, LOGOUT } from "../constants";
+import { ADD_TO_CART, REMOVE_FROM_CART, SUB_QUANTITY, ADD_QUANTITY, ADD_SHIPPING, APPLY_COUPON, LOGIN, EMPTY_CART, LOGOUT, FETCH_USERS } from "../constants";
 
 const initState = {
   items: [
@@ -19,7 +19,7 @@ const initState = {
   addedItems: [],
   total: 0,
   counter: 0,
-  isAuth: false
+  userList:[]
 
 }
 // export const UserReducer=(state=initState.isAuth,action)=>{
@@ -183,10 +183,15 @@ export const ShoppinReducer = (state = initState, action) => {
   if (action.type === LOGOUT) {
     localStorage.removeItem('login')
     localStorage.removeItem('user')
+
+  }
+  if(action.type===FETCH_USERS)
+  {
+    console.log(action.payload);
     return {
       ...state,
-      isAuth: false
-    }
+      userList: action.payload,
+      }
   }
   else {
     return state

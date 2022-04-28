@@ -75,19 +75,57 @@ const getUserList = async (_req, res) => {
       res.send(users);
     });
 };
-const Delete = (req, res) => {
-  const id  = req.params.body
-
-  User.deleteOne({
-    id:id
+const updateUser = (req, res) => {
+  const id = req.params.id
+  User.findByIdAndUpdate({ _id: id }, {
+    $set: {
+      username: req.body.username,
+      password: req.body.password,
+      confirmPassword: req.body.confirmPassword,
+      email: req.body.email,
+      phone: req.body.phone,
+    }
   })
+    .then((result) => {
+
+      if (result) {
+        return res.send({
+          message: "User was Updated successfully!",
+          success: true,
+          data: {},
+        }
+        );
+      } else {
+        return res.send({
+          message: `Cannot Update User `,
+          success: false,
+          data: {},
+        });
+      }
+
+    }
+    )
+    .catch((err) => {
+      return res.status(500).send({
+        message: "Could not Update User with id=" + id,
+        success: false,
+        data: {},
+      });
+    });
+}
+
+const Delete = (req, res) => {
+  const id = req.params.id
+
+  User.deleteOne({ _id: id })
     .then((num) => {
-      if (num === 1) {
+      if (num) {
         return res.send({
           message: "User was deleted successfully!",
           success: true,
           data: {},
-        });
+        }
+        );
       } else {
         return res.send({
           message: `Cannot delete User `,
@@ -95,7 +133,9 @@ const Delete = (req, res) => {
           data: {},
         });
       }
-    })
+
+    }
+    )
     .catch((err) => {
       return res.status(500).send({
         message: "Could not delete User with id=" + id,
@@ -107,7 +147,7 @@ const Delete = (req, res) => {
 
 // login user  functionality
 const loginUser = (req, res) => {
-  User.find({email: req.body.email})
+  User.find({ email: req.body.email })
     .exec()
     .then((user) => {
       if (user.length < 1) {
@@ -161,5 +201,6 @@ module.exports = {
   loginUser,
   getUserList,
   uploadImg,
-  Delete
+  Delete,
+  updateUser
 };

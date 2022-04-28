@@ -102,6 +102,7 @@ const SignUp = () => {
       .then(function (response) {
 
         alert("Registered successfully.");
+        setFormValues(initialValues)
       })
       .catch(function (error) {
         console.log(error);

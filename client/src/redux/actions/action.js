@@ -1,4 +1,5 @@
-import { ADD_TO_CART, REMOVE_FROM_CART, SUB_QUANTITY, ADD_QUANTITY, EMPTY_CART, APPLY_COUPON, LOGIN, LOGOUT } from "../constants";
+import { ADD_TO_CART, REMOVE_FROM_CART, SUB_QUANTITY, ADD_QUANTITY, EMPTY_CART, APPLY_COUPON, LOGIN, LOGOUT ,FETCH_USERS,DELETE_USER} from "../constants";
+import axios from "axios";
 
 //add cart action
 export const addToCart = (id) => {
@@ -40,7 +41,47 @@ export const emptyCart = () => {
   };
 };
 
-//User aations
+//User actions
+export const fetchData = () => {
+  return async (dispatch) => {
+    var get = {
+      method: 'get',
+      url: 'http://localhost:5000/user/userlist/',
+      headers: { },
+    };
+    try {
+      const response = await axios(get);
+      const response_1 = response.data;
+      console.log(response_1);
+      return dispatch(
+        { type: FETCH_USERS, payload: response_1 });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+}
+export const deleteUser=(id)=>{
+  return async (dispatch) => {
+    var get = {
+      method: 'delete',
+      url: `http://localhost:5000/user/delete/${id}`,
+      headers: {}
+    };
+    try {
+      const response = await axios(get);
+      const response_1 = response.data;
+      console.log(response_1);
+      if(response.status===200)
+      {
+        alert(JSON.stringify(response.data.message))
+        return dispatch(fetchData())
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+}
+
 export const login = () => {
   return {
     type: LOGIN

@@ -10,3 +10,5 @@ export const APPLY_COUPON = 'APPLY_COUPON ';
 //User Constants
 export const LOGIN='LOGIN'
 export const LOGOUT ='LOGOUT'
+export const FETCH_USERS='FETCH_USERS'
+export const DELETE_USER='DELETE_USER'

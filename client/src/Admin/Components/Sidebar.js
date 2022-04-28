@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom"
+
 const Sidebar=()=>{
     return(
         
@@ -9,39 +11,35 @@ const Sidebar=()=>{
       </div>
       <aside>
         <div className="aside-logo">
-          <a href="index.html"><img src="images/logo.png" alt="" /></a>
+          <a href="index.html"><img src="images/logo.png" alt=" " /></a>
         </div>
-        <li className="active">
-          <a href="index.html">
+        <li className="">
+          <NavLink to="/dashboard" activeclassname="active">
             Dashboard
-          </a>
+          </NavLink>
         </li>
         <li>
-          <a href="customer.html">
-            Customer
-          </a>
-        </li>
-
-        <li>
-          <a href="vendor.html">
-            Vendor
-          </a>
-        </li>
-        <li>
-          <a href="rider.html">
-            Rider
-          </a>
+          <NavLink to="/orders" activeclassname="active">
+            Orders
+          </NavLink>
         </li>
 
         <li>
-          <a href="user.html">
-            User
-          </a>
+          <NavLink to="/products" activeclassname="active">
+            Products
+          </NavLink>
+        </li>
+       
+
+        <li>
+          <NavLink to="/customers" activeclassname="active">
+            Cutomers
+          </NavLink>
         </li>
         <li>
-          <a href="user.html">
-            User 2
-          </a>
+          <NavLink to="/reviews" activeclassname="active">
+            Reviews
+          </NavLink>
         </li>
 
       </aside>

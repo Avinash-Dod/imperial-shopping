@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const addproducts = (req, res) => {
   const products = new Products({
     _id: new mongoose.Types.ObjectId(),
-    id: Math.floor(Math.random() * 100),
+    id: Math.floor(Math.count() * 100),
     productName: req.body.productName,
     price: req.body.price,
     description:req.body.description
