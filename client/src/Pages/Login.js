@@ -77,10 +77,14 @@ const Login = () => {
 
       axios(config)
         .then(function (response) {
-          localStorage.setItem('login', JSON.stringify(response.data.token))
-          localStorage.setItem('user', userData.email)
+          sessionStorage.setItem('login', JSON.stringify(response.data.token))
+          sessionStorage.setItem('user', userData.email)
           dispatch(login())
           navigate("/")
+          if(response.status===401)
+          {
+            alert(response.data.msg)
+          }
         })
         .catch(function (error) {
           console.log(error);

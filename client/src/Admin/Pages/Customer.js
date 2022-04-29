@@ -62,8 +62,8 @@ const HandleDelete=(id)=>{
                                             </td>
                                             <td>
                                                 <h6>
-                                                    <button onClick={()=>HandleDelete(users._id)}><i class="fa fa-trash" aria-hidden="true"></i></button>
-                                                    <button data-toggle="modal" data-target="#editModal"><i class="fa fa-edit" aria-hidden="true"></i></button>
+                                                    <button onClick={()=>HandleDelete(users._id)}><i className="fa fa-trash" aria-hidden="true"></i></button>
+                                                    <Link to="/editCustomer"><i className="fa fa-edit" aria-hidden="true"></i></Link>
                                                 </h6>
                                             </td>
                                         </tr>
@@ -78,7 +78,7 @@ const HandleDelete=(id)=>{
                             })
 
 
-                        ) : <tr><td colSpan={4}><h3> <i class="fa fa-times-circle"></i> Nothing in Cart</h3></td></tr>
+                        ) : <tr><td colSpan={4}><h3> <i className="fa fa-times-circle"></i> No Customer</h3></td></tr>
                         }
 
                     </table>

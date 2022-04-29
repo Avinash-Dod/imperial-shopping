@@ -1,7 +1,4 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import './Login_signup.css'
@@ -16,8 +13,6 @@ const SignUp = () => {
   const initialValues = { username: '', email: '', password: '', cPassword: '', mno: '' };
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
-  const navigate = useNavigate();
-  const dispatch = useDispatch()
   const errors = {};
   // const userData = {
   //   username: formValues.email,
@@ -46,16 +41,16 @@ const SignUp = () => {
   }, [formErrors]);
   const validate = (values) => {
 
-     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
     if (!values.email) {
       errors.email = "Email is required!";
     }
-     else if (!regex.test(values.email)) {
-    errors.email = "This is not a valid email format!";
+    else if (!regex.test(values.email)) {
+      errors.email = "This is not a valid email format!";
     }
     if (!values.username) {
       errors.username = "Username is required!";
-    }    
+    }
     if (!values.password) {
       errors.password = "Password is required!";
     } else if (values.password.length < 6) {
@@ -74,9 +69,9 @@ const SignUp = () => {
     }
     else if (values.mno.length < 10) {
       errors.mno = "Mobile number must be 10 digit";
-  } else if (values.mno.length > 10) {
+    } else if (values.mno.length > 10) {
       errors.mno = "Mobile number cannot exceed more than 10 digit";
-  }
+    }
     return errors;
   };
   function onSubmitHandler(event) {
@@ -86,31 +81,32 @@ const SignUp = () => {
       return
     }
     else {
-    var axios = require('axios');
-    var data = JSON.stringify(userData);
+      var axios = require('axios');
+      var data = JSON.stringify(userData);
 
-    var config = {
-      method: 'post',
-      url: 'http://localhost:5000/user/signup',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      data: data
-    };
+      var config = {
+        method: 'post',
+        url: 'http://localhost:5000/user/signup',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: data
+      };
 
-    axios(config)
-      .then(function (response) {
+      axios(config)
+        .then(function (response) {
 
-        alert("Registered successfully.");
-        setFormValues(initialValues)
-      })
-      .catch(function (error) {
-        console.log(error);
-        alert("login failed.")
-      });
+          alert("Registered successfully.");
+          setFormValues(initialValues)
+        })
+        .catch(function (error) {
+          console.log(error);
+          alert("login failed.")
+        });
 
-    // console.log(userData)
-  }}
+      // console.log(userData)
+    }
+  }
 
   return (
     <div>
@@ -146,7 +142,7 @@ const SignUp = () => {
                   <p className='error-message'>{formErrors.email}</p>
                   <div className="input-container well">
                     <i className="fa fa-user icon"></i>
-                    <input className="input-field" type="number" placeholder="Mobile Number" name="mno" value={formValues.mno} 
+                    <input className="input-field" type="number" placeholder="Mobile Number" name="mno" value={formValues.mno}
                       onChange={handleChange} />
                   </div>
                   <p className='error-message'>{formErrors.mno}</p>
@@ -175,9 +171,6 @@ const SignUp = () => {
 
           </div>
         </div>
-
-
-
       </div>
       <Footer />
     </div>

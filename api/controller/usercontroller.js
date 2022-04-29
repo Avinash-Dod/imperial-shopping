@@ -6,6 +6,7 @@ const User = require("../model/userSchema");
 // uloading image with  registration page and storing image locally
 const multer = require("multer");
 const { application } = require("express");
+const { hash } = require("bcrypt");
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "./upload");
@@ -75,13 +76,13 @@ const getUserList = async (_req, res) => {
       res.send(users);
     });
 };
-const updateUser = (req, res) => {
+const updateUser =  (req, res) => {
   const id = req.params.id
   User.findByIdAndUpdate({ _id: id }, {
     $set: {
       username: req.body.username,
-      password: req.body.password,
-      confirmPassword: req.body.confirmPassword,
+      password: req.body.password ?  await bcrypt.hash(req.body.pin, 10) : false,
+      confirmPassword: req.body.password? await bcrypt.hash(req.body.pin, 10) : false,
       email: req.body.email,
       phone: req.body.phone,
     }

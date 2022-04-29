@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import AdminHeader from "../Components/AdminHeader"
 import Sidebar from "../Components/Sidebar"
 
@@ -23,28 +24,28 @@ const Dashboard = () => {
                                 <div class="box-index">
                                     <h2>Orders</h2>
                                     <h1>150 +</h1>
-                                    <h6><a href="customer.html">View  <i className="fa fa-arrow-right" alt="" /></a></h6>
+                                    <h6><Link to="/orders">View  <i className="fa fa-arrow-right" alt="" /></Link></h6>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6">
                                 <div class="box-index">
                                     <h2>Products</h2>
                                     <h1>10 +</h1>
-                                    <h6><a href="vendor.html">View <i className="fa fa-arrow-right" alt="" /></a></h6>
+                                    <h6><Link to="/products">View <i className="fa fa-arrow-right" alt="" /></Link></h6>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6">
                                 <div class="box-index">
                                     <h2>Customers</h2>
                                     <h1>350 +</h1>
-                                    <h6><a href="rider.html">View  <i className="fa fa-arrow-right" alt="" /></a></h6>
+                                    <h6><Link to="/customers">View  <i className="fa fa-arrow-right" alt="" /></Link></h6>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6">
                                 <div class="box-index">
                                     <h2>Reviews</h2>
                                     <h1>450 +</h1>
-                                    <h6><a href="user.html">View  <i className="fa fa-arrow-right" alt="" /></a></h6>
+                                    <h6><Link to="/reviews">View  <i className="fa fa-arrow-right" alt="" /></Link></h6>
                                 </div>
                             </div>
                         </div>

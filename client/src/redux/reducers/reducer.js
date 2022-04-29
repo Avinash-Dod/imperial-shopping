@@ -181,8 +181,8 @@ export const ShoppinReducer = (state = initState, action) => {
     }
   }
   if (action.type === LOGOUT) {
-    localStorage.removeItem('login')
-    localStorage.removeItem('user')
+    sessionStorage.removeItem('login')
+    sessionStorage.removeItem('user')
 
   }
   if(action.type===FETCH_USERS)
