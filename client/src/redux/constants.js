@@ -12,3 +12,6 @@ export const LOGIN='LOGIN'
 export const LOGOUT ='LOGOUT'
 export const FETCH_USERS='FETCH_USERS'
 export const DELETE_USER='DELETE_USER'
+//Product constants
+export const FETCH_PRODUCTS='FETCH_PRODUCTS'
+export const ADD_PRODUCTS='ADD_PRODUCTS'

@@ -81,11 +81,12 @@ const updateUser =  (req, res) => {
   User.findByIdAndUpdate({ _id: id }, {
     $set: {
       username: req.body.username,
-      password: req.body.password ?  await bcrypt.hash(req.body.pin, 10) : false,
-      confirmPassword: req.body.password? await bcrypt.hash(req.body.pin, 10) : false,
+      password: req.body.password ,
+      confirmPassword: req.body.password,
       email: req.body.email,
       phone: req.body.phone,
     }
+    //  ?  await bcrypt.hash(req.body.pin, 10) : false,? await bcrypt.hash(req.body.pin, 10) : false,
   })
     .then((result) => {
 

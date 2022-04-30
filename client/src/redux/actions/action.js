@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART, SUB_QUANTITY, ADD_QUANTITY, EMPTY_CART, APPLY_COUPON, LOGIN, LOGOUT ,FETCH_USERS} from "../constants";
+import { ADD_TO_CART, REMOVE_FROM_CART, SUB_QUANTITY, ADD_QUANTITY, EMPTY_CART, APPLY_COUPON, LOGIN, LOGOUT ,FETCH_USERS, FETCH_PRODUCTS} from "../constants";
 import axios from "axios";
 
 //add cart action
@@ -55,6 +55,24 @@ export const fetchData = () => {
       console.log(response_1);
       return dispatch(
         { type: FETCH_USERS, payload: response_1 });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+}
+export const fetchProducts = () => {
+  return async (dispatch) => {
+    var get = {
+      method: 'get',
+      url: 'http://localhost:5000/product/gProducts/',
+      headers: { },
+    };
+    try {
+      const response = await axios(get);
+      const response_1 = response.data;
+      console.log(response_1);
+      return dispatch(
+        { type: FETCH_PRODUCTS, payload: response_1 });
     } catch (err) {
       console.log(err);
     }

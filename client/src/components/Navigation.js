@@ -1,9 +1,11 @@
 import { Route, Routes } from "react-router";
+import AddProduct from "../Admin/Components/Modals/AddProduct";
 // import AddCustomer from "../Admin/Components/Modals/CustomerAdd";
 import EditCustomer from "../Admin/Components/Modals/CustomerEdit";
 import AdminLogin from "../Admin/Pages/AdminLogin";
 import Customer from "../Admin/Pages/Customer";
 import Dashboard from "../Admin/Pages/Dashboard";
+import Product from "../Admin/Pages/Product";
 import About from "../Pages/About";
 import Cart from "../Pages/Cart";
 import Checkout from "../Pages/Checkout";
@@ -34,8 +36,9 @@ function Nav() {
                 <Route path="alogin" element={<AdminLogin />} />
                 <Route path="dashboard" element={<Dashboard />} />
                 <Route path="customers" element={<Customer />} />
-                <Route path="editCustomer" element={<EditCustomer />} />
-                {/* <Route path="products" element={<Products />} /> */}
+                <Route path="editCustomer" element={<EditCustomer />} />                
+                <Route path="products" element={<Product />} />
+                <Route path="addProduct" element={<AddProduct />} />
                 {/* <Route path="reviews" element={<Reviews />} /> */}
             </Routes>
         </div>
