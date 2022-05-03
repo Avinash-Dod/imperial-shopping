@@ -27,10 +27,49 @@ const addproducts = (req, res) => {
     });
 };
 const getproducts = (_req, res) => {
-  Products.find({}).then(function (products) {
+  prod.find({}).then(function (products) {
     res.send(products);
   });
 };
+const updateProduct =  (req, res) => {
+  const id = req.params.id
+  Products.findByIdAndUpdate({ _id: id }, {
+    $set: {
+      id: Math.floor(Math.count() * 100),
+    productName: req.body.productName,
+    price: req.body.price,
+    description:req.body.description
+      
+    }
+    //  ?  await bcrypt.hash(req.body.pin, 10) : false,? await bcrypt.hash(req.body.pin, 10) : false,
+  })
+    .then((result) => {
+
+      if (result) {
+        return res.send({
+          message: "Product was Updated successfully!",
+          success: true,
+          data: {},
+        }
+        );
+      } else {
+        return res.send({
+          message: `Cannot Update product `,
+          success: false,
+          data: {},
+        });
+      }
+
+    }
+    )
+    .catch((err) => {
+      return res.status(500).send({
+        message: "Could not Update Product with id=" + id,
+        success: false,
+        data: {},
+      });
+    });
+}
 module.exports = {
   addproducts,
   getproducts

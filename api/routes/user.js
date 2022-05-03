@@ -10,6 +10,8 @@ router.delete("/delete/:id", userController.Delete);
 router.put("/update/:id",userController.updateUser)
 // getting all the users from tha database
  router.get("/userlist", userController.getUserList);
+ //find user by id
+ router.get("/fuser/:id", userController.findUser);
 // login route for user
 router.post("/login", userController.loginUser);
 

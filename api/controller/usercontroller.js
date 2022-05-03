@@ -76,6 +76,13 @@ const getUserList = async (_req, res) => {
       res.send(users);
     });
 };
+const findUser= (req,res)=>{
+  const id=req.params.id
+  User.findById({_id:id})
+  .then(function (foundUser) {
+    res.send(foundUser);
+  });
+}
 const updateUser =  (req, res) => {
   const id = req.params.id
   User.findByIdAndUpdate({ _id: id }, {
@@ -204,5 +211,6 @@ module.exports = {
   getUserList,
   uploadImg,
   Delete,
-  updateUser
+  updateUser,
+  findUser
 };

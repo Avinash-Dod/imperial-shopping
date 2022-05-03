@@ -38,7 +38,7 @@ const Cart = (props) => {
     props.applyCoupon(code)
 
   }
-  if (props.addedItems[4] === false && !localStorage.getItem('login')) {
+  if (props.addedItems[4] === false && !sessionStorage.getItem('login')) {
     navigate("/")
   }
   else {

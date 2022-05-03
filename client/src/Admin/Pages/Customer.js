@@ -1,11 +1,25 @@
 
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { connect } from "react-redux"
 import AdminHeader from "../Components/AdminHeader"
 import Sidebar from "../Components/Sidebar"
-import { deleteUser } from "../../redux/actions/action"
+import { deleteUser, findUser } from "../../redux/actions/action"
 
-const Customer = (props) => {
+const Customer =  (props) => {
+    const navigate=useNavigate()
+    const HandleClick= async (id)=>{
+        props.editUser(id)
+         
+        const data=await (props.user[5])
+       
+         if(data.length !==0)
+         {
+             navigate("/editCustomer")
+         }
+
+       
+        
+    }
 const HandleDelete=(id)=>{
     console.log(id);
     if(window.confirm("Are you sure to delete user?")===true)
@@ -63,7 +77,7 @@ const HandleDelete=(id)=>{
                                             <td>
                                                 <h6>
                                                     <button onClick={()=>HandleDelete(users._id)}><i className="fa fa-trash" aria-hidden="true"></i></button>
-                                                    <Link to="/editCustomer"><i className="fa fa-edit" aria-hidden="true"></i></Link>
+                                                    <button onClick={()=>{HandleClick(users._id)}} ><i className="fa fa-edit" aria-hidden="true"></i></button>
                                                 </h6>
                                             </td>
                                         </tr>
@@ -97,7 +111,8 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        deleteUser: (id) => { dispatch(deleteUser(id)) }
+        deleteUser: (id) => { dispatch(deleteUser(id)) },
+        editUser:(id)=>{dispatch(findUser(id))}
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Customer)

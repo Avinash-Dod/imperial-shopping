@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 function Home(props) {
   const navigate=useNavigate()
   const handleClick = (id) => {
-    if(localStorage.getItem('user'))
+    if(sessionStorage.getItem('user'))
     {
       props.addToCart(id)
     }

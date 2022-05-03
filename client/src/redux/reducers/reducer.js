@@ -4,7 +4,7 @@ import Item3 from '../images/item3.jpg'
 import Item4 from '../images/item4.jpg'
 import Item5 from '../images/item5.jpg'
 import Item6 from '../images/item6.jpg'
-import { ADD_TO_CART, REMOVE_FROM_CART, SUB_QUANTITY, ADD_QUANTITY, ADD_SHIPPING, APPLY_COUPON, LOGIN, EMPTY_CART, LOGOUT, FETCH_USERS } from "../constants";
+import { ADD_TO_CART, REMOVE_FROM_CART, SUB_QUANTITY, ADD_QUANTITY, ADD_SHIPPING, APPLY_COUPON, LOGIN, EMPTY_CART, LOGOUT, FETCH_USERS, FIND_USER } from "../constants";
 
 const initState = {
   items: [
@@ -19,7 +19,8 @@ const initState = {
   addedItems: [],
   total: 0,
   counter: 0,
-  userList:[]
+  userList:[],
+  user:[]
 
 }
 // export const UserReducer=(state=initState.isAuth,action)=>{
@@ -156,7 +157,7 @@ export const ShoppinReducer = (state = initState, action) => {
     }
 
   }
-  console.log(state.addedItems)
+  
   if (action.type === 'SUB_SHIPPING') {
     return {
       ...state,
@@ -184,6 +185,14 @@ export const ShoppinReducer = (state = initState, action) => {
     sessionStorage.removeItem('login')
     sessionStorage.removeItem('user')
 
+  }
+  if(action.type===FIND_USER)
+  {
+    console.log(action.payload);
+    return{
+      ...state,
+      user:action.payload
+    }
   }
   if(action.type===FETCH_USERS)
   {

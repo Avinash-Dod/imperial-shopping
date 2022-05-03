@@ -7,6 +7,7 @@ const app = express();
 //routes
 const UserRoute = require("../api/routes/user");
 const ProductRoute=require("../api/routes/product")
+const OrderRoute=require("../api/routes/orders")
 //body parser
 var bodyParser = require("body-parser");
 
@@ -19,6 +20,7 @@ app.use(bodyParser.json());
 // routes after /
 
 app.use("/user", UserRoute);
+app.use("/order", OrderRoute);
 app.use("/product", ProductRoute);
 
 

@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART, SUB_QUANTITY, ADD_QUANTITY, EMPTY_CART, APPLY_COUPON, LOGIN, LOGOUT ,FETCH_USERS, FETCH_PRODUCTS} from "../constants";
+import { ADD_TO_CART, REMOVE_FROM_CART, SUB_QUANTITY, ADD_QUANTITY, EMPTY_CART, APPLY_COUPON, LOGIN, LOGOUT ,FETCH_USERS, FETCH_PRODUCTS, FIND_USER} from "../constants";
 import axios from "axios";
 
 //add cart action
@@ -94,6 +94,23 @@ export const deleteUser=(id)=>{
         alert(JSON.stringify(response.data.message))
         return dispatch(fetchData())
       }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+}
+export const findUser=(id)=>{
+  return async (dispatch) => {
+    var getUser = {
+      method: 'get',
+      url: `http://localhost:5000/user/fuser/${id}`,
+      
+    };
+    try {
+      const response = await axios(getUser);
+      const response_1 = response.data;
+      return dispatch(
+        { type: FIND_USER, payload: response_1 });
     } catch (err) {
       console.log(err);
     }
