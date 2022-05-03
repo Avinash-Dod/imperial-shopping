@@ -45,15 +45,31 @@ const Orders = (props) => {
                                                         <strong><td>Address</td></strong>
                                                         <td>{order.address}</td>
                                                     </tr>
-                                                    <tr colspan="8"><td>Order Details</td></tr>
-                                                    <tr>
-                                                        <td>Address</td>
+                                                   
+                                                    <tr colspan="4">
+                                                        <td >Address</td>
                                                         <td>{order.address}</td>
-                                                        <td>Pincode : </td>
+                                                        <td >Pincode : </td>
                                                         <td>{order.postCode}</td>
-                                                        <td>{Object.values(order.productDetail)}</td>
+                                                         </tr>
+                                                         <tr colspan="8"><td>Order Details</td></tr>
+                                                         <tr colspan="8">
+                                                         <td></td>
+                                                         {order.productDetail.map(pro=>{
+                                                             return (
+                                                                 <>
+                                                                 <td><p>{pro.id}</p></td>
+                                                                 <td><p>{pro.title}</p></td>
+                                                                 <td><p>{pro.price}</p></td>
+                                                                 <td><p>{pro.desc}</p></td>
+                                                                                                                                  
+</>
 
-                                                    </tr>
+
+                                                             )
+                                                         })}
+                                                        <></>
+                                                         </tr>
 
 
                                                 </table>
