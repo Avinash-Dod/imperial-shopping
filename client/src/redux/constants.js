@@ -16,3 +16,5 @@ export const FIND_USER='FIND_USER'
 //Product constants
 export const FETCH_PRODUCTS='FETCH_PRODUCTS'
 export const ADD_PRODUCTS='ADD_PRODUCTS'
+//order constants
+export const FETCH_ORDER='FETCH_ORDER'

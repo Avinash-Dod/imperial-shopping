@@ -4,7 +4,7 @@ import Item3 from '../images/item3.jpg'
 import Item4 from '../images/item4.jpg'
 import Item5 from '../images/item5.jpg'
 import Item6 from '../images/item6.jpg'
-import { ADD_TO_CART, REMOVE_FROM_CART, SUB_QUANTITY, ADD_QUANTITY, ADD_SHIPPING, APPLY_COUPON, LOGIN, EMPTY_CART, LOGOUT, FETCH_USERS, FIND_USER } from "../constants";
+import { ADD_TO_CART, REMOVE_FROM_CART, SUB_QUANTITY, ADD_QUANTITY, ADD_SHIPPING, APPLY_COUPON, LOGIN, EMPTY_CART, LOGOUT, FETCH_USERS, FIND_USER, FETCH_ORDER } from "../constants";
 
 const initState = {
   items: [
@@ -20,7 +20,8 @@ const initState = {
   total: 0,
   counter: 0,
   userList:[],
-  user:[]
+  user:[],
+  orderList:[]
 
 }
 // export const UserReducer=(state=initState.isAuth,action)=>{
@@ -201,6 +202,14 @@ export const ShoppinReducer = (state = initState, action) => {
       ...state,
       userList: action.payload,
       }
+  }
+  //order reducer
+  if(action.type===FETCH_ORDER)
+  {
+    return{
+      ...state,
+      orderList:action.payload
+    }
   }
   else {
     return state

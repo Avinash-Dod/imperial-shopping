@@ -5,6 +5,7 @@ import EditCustomer from "../Admin/Components/Modals/CustomerEdit";
 import AdminLogin from "../Admin/Pages/AdminLogin";
 import Customer from "../Admin/Pages/Customer";
 import Dashboard from "../Admin/Pages/Dashboard";
+import Orders from "../Admin/Pages/Orders";
 import Product from "../Admin/Pages/Product";
 import About from "../Pages/About";
 import Cart from "../Pages/Cart";
@@ -40,6 +41,8 @@ function Nav() {
                 <Route path="products" element={<Product />} />
                 <Route path="addProduct" element={<AddProduct />} />
                 {/* <Route path="reviews" element={<Reviews />} /> */}
+                {/* order routes */}
+                <Route path="orders" element={<Orders />} />
             </Routes>
         </div>
     )

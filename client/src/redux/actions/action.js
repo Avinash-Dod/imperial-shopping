@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART, SUB_QUANTITY, ADD_QUANTITY, EMPTY_CART, APPLY_COUPON, LOGIN, LOGOUT ,FETCH_USERS, FETCH_PRODUCTS, FIND_USER} from "../constants";
+import { ADD_TO_CART, REMOVE_FROM_CART, SUB_QUANTITY, ADD_QUANTITY, EMPTY_CART, APPLY_COUPON, LOGIN, LOGOUT ,FETCH_USERS, FETCH_PRODUCTS, FIND_USER, FETCH_ORDER} from "../constants";
 import axios from "axios";
 
 //add cart action
@@ -127,4 +127,24 @@ export const logout = () => {
     type: LOGOUT
   }
 
+}
+//order action
+export const fetchOrder = () => {
+  return async (dispatch) => {
+    var getOrder = {
+      method: 'get',
+      url: 'http://localhost:5000/order/orderList/',
+      headers: { }
+    };
+    
+    try {
+      const response = await axios(getOrder);
+      const response_1 = response.data;
+      console.log(response_1);
+      return dispatch(
+        { type: FETCH_ORDER, payload: response_1 });
+    } catch (err) {
+      console.log(err);
+    }
+  }
 }

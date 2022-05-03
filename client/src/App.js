@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import './App.css';
 import Nav from './components/Navigation';
-import { fetchData } from './redux/actions/action';
+import { fetchData, fetchOrder } from './redux/actions/action';
 
 
 function App() { 
@@ -10,7 +10,8 @@ function App() {
     const dispatch=useDispatch()
     useEffect(() => {
      async function fetchApi() {        
-       dispatch(fetchData());        
+       dispatch(fetchData());
+       dispatch(fetchOrder());        
      }
      fetchApi()
    },[dispatch])
