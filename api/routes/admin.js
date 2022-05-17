@@ -9,7 +9,7 @@ router.delete("/delete/:id", adminController.Delete);
 //update Admin details
 router.put("/update/:id",adminController.updateAdmin)
 // getting all the Admins from tha database
- router.get("/adminlist", adminController.getAdminList);
+ router.get("/adminList", adminController.getAdminList);
  //find Admin by id
  router.get("/fadmin/:id", adminController.findAdmin);
 // login route for Admin

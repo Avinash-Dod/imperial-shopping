@@ -72,8 +72,8 @@ const getAdminList = async (_req, res) => {
   Admin.find({})
     // .populate("user")
 
-    .then(function (admins) {
-      res.send(admins);
+    .then(function (Admin) {
+      res.send(Admin);
     });
 };
 const findAdmin= (req,res)=>{

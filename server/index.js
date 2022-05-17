@@ -6,6 +6,7 @@ const app = express();
 
 //routes
 const UserRoute = require("../api/routes/user");
+const AdminRoute = require("../api/routes/admin");
 const ProductRoute=require("../api/routes/product")
 const OrderRoute=require("../api/routes/orders")
 //body parser
@@ -22,6 +23,7 @@ app.use(bodyParser.json());
 app.use("/user", UserRoute);
 app.use("/order", OrderRoute);
 app.use("/product", ProductRoute);
+app.use("/admin", AdminRoute);
 
 
 
