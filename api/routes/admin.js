@@ -2,17 +2,17 @@ const express = require("express");
 const router = express.Router();
 
 const adminController = require("../controller/adminController");
-//registering user
-router.post("/signup", adminController.uploadImg, adminController.registerUser);
-//deleting user
+//registering Admin
+router.post("/signup", adminController.uploadImg, adminController.registerAdmin);
+//deleting Admin
 router.delete("/delete/:id", adminController.Delete);
-//update user details
-router.put("/update/:id",adminController.updateUser)
-// getting all the users from tha database
- router.get("/adminlist", adminController.getUserList);
- //find user by id
- router.get("/fadmin/:id", adminController.findUser);
-// login route for user
-router.post("/login", adminController.loginUser);
+//update Admin details
+router.put("/update/:id",adminController.updateAdmin)
+// getting all the Admins from tha database
+ router.get("/adminlist", adminController.getAdminList);
+ //find Admin by id
+ router.get("/fadmin/:id", adminController.findAdmin);
+// login route for Admin
+router.post("/login", adminController.loginAdmin);
 
 module.exports = router;
