@@ -1,0 +1,74 @@
+[
+    {
+        "_id": "62469ae55326198ac015ede7",
+        "username": "avinashdod",
+        "password": "$2b$10$9F29SYICqxFXVUK.meMXuOn0B6y9MfRK7ks9NBAwbG7UGENtCKKE.",
+        "confirmPassword": "$2b$10$9F29SYICqxFXVUK.meMXuOn0B6y9MfRK7ks9NBAwbG7UGENtCKKE.",
+        "email": "avinashdod@gmail.com",
+        "phone": 8989084940,
+        "__v": 0
+    },
+    {
+        "_id": "624804e07651095b9dd33348",
+        "username": "akshat",
+        "password": "$2b$10$GAcvofjVP63M735RxcgxkeJRLNAz5Fcdml7r74FzRlO7Ogmy5813m",
+        "confirmPassword": "$2b$10$GAcvofjVP63M735RxcgxkeJRLNAz5Fcdml7r74FzRlO7Ogmy5813m",
+        "email": "akshat@gmail.com",
+        "phone": 7898893617,
+        "__v": 0
+    },
+    {
+        "_id": "62481d7ca9cecf7ee863eb38",
+        "username": "dibyansh",
+        "password": "$2b$10$bNN82VR/Lf9HrWzL3siNl.A0C3LeNrCORPEtWniwFhrgqnrryJDJ.",
+        "confirmPassword": "$2b$10$bNN82VR/Lf9HrWzL3siNl.A0C3LeNrCORPEtWniwFhrgqnrryJDJ.",
+        "email": "dibyansh@gmail.com",
+        "phone": 1425364569,
+        "__v": 0
+    },
+    {
+        "_id": "62482461add2bd580898bc62",
+        "username": "ravi",
+        "password": "$2b$10$5enpr3yGyrhauMsDuJE4VOLgtso924Y8b89L4HAWeput66BP81lCu",
+        "confirmPassword": "$2b$10$5enpr3yGyrhauMsDuJE4VOLgtso924Y8b89L4HAWeput66BP81lCu",
+        "email": "ravi@gmail.com",
+        "phone": 9519018155,
+        "__v": 0
+    },
+    {
+        "_id": "62497aca2d9b2404260f50c5",
+        "username": "himanshu",
+        "password": "$2b$10$nbae6crbtiAjCTSIbLqQP.r.WBXbTvRipzGlIoXOMazZgPS0w9g0u",
+        "confirmPassword": "$2b$10$nbae6crbtiAjCTSIbLqQP.r.WBXbTvRipzGlIoXOMazZgPS0w9g0u",
+        "email": "himanshu@gmail.com",
+        "phone": 9424043597,
+        "__v": 0
+    },
+    {
+        "_id": "624ab58bf138aea772f037fa",
+        "username": "ajay",
+        "password": "$2b$10$32LNGCHzdD0.LF10Wv8CAeD7ISCt/HL9ftkFDPEjC0/7qMKlCJ/H6",
+        "confirmPassword": "$2b$10$32LNGCHzdD0.LF10Wv8CAeD7ISCt/HL9ftkFDPEjC0/7qMKlCJ/H6",
+        "email": "ajay@gmail.com",
+        "phone": 9999999999,
+        "__v": 0
+    },
+    {
+        "_id": "624aba6b6f86f93271351654",
+        "username": "sakshi",
+        "password": "$2b$10$EB3ehu1EObCJ.lVRDuRSz.YrweZQtmXflC6IlClp1Nl/vOiacBoNa",
+        "confirmPassword": "$2b$10$EB3ehu1EObCJ.lVRDuRSz.YrweZQtmXflC6IlClp1Nl/vOiacBoNa",
+        "email": "sakshi@gmail.com",
+        "phone": 9340278909,
+        "__v": 0
+    },
+    {
+        "_id": "624abc208cfa4ed887f0d3fb",
+        "username": "pritesh",
+        "password": "$2b$10$47eTDVXRJUxtGxg2oZOBxOL9J565weRzzbmnJx4rLB97afxeS6SRW",
+        "confirmPassword": "$2b$10$47eTDVXRJUxtGxg2oZOBxOL9J565weRzzbmnJx4rLB97afxeS6SRW",
+        "email": "pritesh@gmail.com",
+        "phone": 4561237890,
+        "__v": 0
+    }
+]

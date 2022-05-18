@@ -1,0 +1,54 @@
+.input-container {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.icon {
+  padding: 15px;
+  background: #f33f3f;
+  color: white;
+  min-width: 50px;
+  text-align: center;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+}
+
+.input-field:focus {
+  border: 2px solid red;
+}
+
+/* Set a style for the submit button */
+.btn {
+  background-color: #f33f3f;
+  color: white;
+  padding: 15px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+.Head{
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.login{
+  width: 50%;
+  min-width: 100%;
+  min-height:100% ;
+  margin: auto;
+  box-shadow: 0 0 0 2px #afa7a7;
+  
+  
+
+}
